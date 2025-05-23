@@ -1,25 +1,57 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
-import React, { useEffect, useState } from 'react'
-import { useLocalSearchParams } from 'expo-router'
+import { StyleSheet, Text, View, Image, Button, Alert } from 'react-native'
+import React, { useContext, useEffect, useState } from 'react'
+import { useLocalSearchParams, useRouter } from 'expo-router'
 import itemService from '@/services/itemService';
 import { Item } from '@/types';
+import { ItemsContext } from '../_layout';
 
 const Details = () => {
 
     const { id } = useLocalSearchParams<{ id: string }>();
     const [item, setItem] = useState<Item>();
+    const router = useRouter();
+    const { items, setItems } = useContext(ItemsContext);
     
     useEffect(() => {
-            const getItem = async () => {
-                try {
-                    const item = await itemService.getItemById(id);
-                    setItem(item);
-                } catch (error) {
-                    console.log(error);
-                }
-            };
-            getItem();
-        }, []);
+      const getItem = async () => {
+          try {
+              const item = await itemService.getItemById(id);
+              setItem(item);
+          } catch (error) {
+              console.log(error);
+          }
+      };
+      getItem();
+    }, []);
+
+    const handleDeleteItem = async () => {
+      Alert.alert(
+        'Delete item?',
+        'This cannot be undone.',
+        [
+          {
+            text: "Yes",
+            onPress: async () => {
+              try {
+                await itemService.deleteItem(id);
+                alert('Item deleted succesfully!');
+                router.navigate('/items');
+                setItems(items.filter(item => item.id !== id))
+              } catch (error) {
+                alert('Error deleting item.');
+              }
+            }
+          },
+          {
+            text: "No",
+            onPress: () => console.log("Cancel")
+          }
+        ],
+        { cancelable: false }
+      )
+    }
+
+    
 
   if (!item) {
     return (
@@ -38,6 +70,9 @@ const Details = () => {
       <View className='w-full flex flex-col gap-2 px-2'>
         <Text className='text-2xl font-medium'>Description</Text>
         <Text className='text-lg'>{item.description}</Text>
+      </View>
+      <View className='w-1/5 p-0 m-0 flex justify-end items-end'>
+        <Button title="Delete" onPress={() => handleDeleteItem()} color={"#2b7fff"} />
       </View>
     </View>
   )

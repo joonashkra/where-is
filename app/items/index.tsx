@@ -1,26 +1,15 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React, { useEffect, useState } from 'react'
-import { Link } from 'expo-router'
+import { Button, StyleSheet, Text, View } from 'react-native'
+import React, { useContext, useState } from 'react'
 import ItemsList from '@/components/ItemsList'
-import itemService from '@/services/itemService'
-import { Item } from '@/types'
 import ItemsSearch from '@/components/ItemsSearch'
+import { WhereIsContext } from '../_layout'
+import { useRouter } from 'expo-router'
 
 const index = () => {
-  const [items, setItems] = useState<Item[]>([]);
-  const [searchTerm, setSearchTerm] = useState('');
+  const { items } = useContext(WhereIsContext);
+  const router = useRouter();
 
-  useEffect(() => {
-      const getItems = async () => {
-          try {
-              const items = await itemService.getAllItems();
-              setItems(items);
-          } catch (error) {
-              console.log(error);
-          }
-      };
-      getItems();
-  }, []);
+  const [searchTerm, setSearchTerm] = useState('');
 
   if(!items) {
     return (
@@ -35,11 +24,14 @@ const index = () => {
   );
 
   return (
-    <View className="flex py-4 gap-4">
-      <Text className="text-3xl text-center">Items</Text>
-      <ItemsSearch searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      <ItemsList items={filteredItems} />
-    </View>
+      <View className="flex py-4 gap-4">
+        <View className='flex flex-row p-2 w-96'>
+          <Button title="Go Home" onPress={() => router.navigate('/items')} color={"#2b7fff"} />
+          <Text className="text-3xl text-center flex self-center">Items</Text>
+        </View>
+        <ItemsSearch searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        <ItemsList items={filteredItems} />
+      </View>
   )
 }
 

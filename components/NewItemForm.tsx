@@ -1,12 +1,16 @@
 import { View, Text, TextInput, Button, Image, TouchableOpacity, Keyboard, TouchableWithoutFeedback } from 'react-native';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import * as ImagePicker from 'expo-image-picker';
 import itemService from '@/services/itemService';
+import { ItemsContext } from '@/app/_layout';
+import { useRouter } from 'expo-router';
 
 const NewItemForm = () => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [image, setImage] = useState<string | null>(null); // Ensure type safety
+  const { items, setItems } = useContext(ItemsContext);
+  const router = useRouter();
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -21,27 +25,21 @@ const NewItemForm = () => {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if(!name || !description) {
       alert("Please give name and description.");
       return;
     }
     console.log('Submitting:', { name, description, image });
-    // TODO: Handle form submission
-    itemService.addItem({
-      name,
-      description,
-      image,
-    }).then(() => {
-      console.log("Item added successfully");
+    try {
+      const newItem = await itemService.addItem({ name, description, image });
       alert("Item added successfully!");
-      setName('');
-      setDescription('');
-      setImage(null);
-    }).catch((error) => {
+      setItems(items.concat(newItem));
+      router.navigate(`/items/${newItem.id}`);
+    } catch (error) {
       console.error("Error adding item:", error);
       alert("Failed to add item. Please try again.");
-    });
+    }
     Keyboard.dismiss();
   };
 

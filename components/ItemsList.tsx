@@ -1,6 +1,5 @@
-import { FlatList, StyleSheet, Text, View, Image, Pressable, TextInput } from 'react-native';
-import React, { useEffect, useState } from 'react';
-import itemService from '../services/itemService';
+import { FlatList, StyleSheet, Text, View, Image, Pressable, PanResponder, TouchableOpacity } from 'react-native';
+import React from 'react';
 import { Item } from '../types';
 import { Link } from 'expo-router';
 
