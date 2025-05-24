@@ -1,28 +1,17 @@
-import { StyleSheet, Text, View, Image, Button, Alert } from 'react-native'
+import { ScrollView, Text, View, Image, Button, Alert } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
 import { useLocalSearchParams, useRouter } from 'expo-router'
 import itemService from '@/services/itemService';
 import { Item } from '@/types';
-import { ItemsContext } from '../_layout';
+import { AppContext } from '../_layout';
+import ItemCard from '@/components/ItemCard';
 
-const Details = () => {
-
+export default function Details() {
     const { id } = useLocalSearchParams<{ id: string }>();
-    const [item, setItem] = useState<Item>();
     const router = useRouter();
-    const { items, setItems } = useContext(ItemsContext);
+    const { items, setItems } = useContext(AppContext);
     
-    useEffect(() => {
-      const getItem = async () => {
-          try {
-              const item = await itemService.getItemById(id);
-              setItem(item);
-          } catch (error) {
-              console.log(error);
-          }
-      };
-      getItem();
-    }, []);
+    const item = items.find(item => item.id === id);
 
     const handleDeleteItem = async () => {
       Alert.alert(
@@ -35,8 +24,8 @@ const Details = () => {
               try {
                 await itemService.deleteItem(id);
                 alert('Item deleted succesfully!');
-                router.navigate('/items');
                 setItems(items.filter(item => item.id !== id))
+                router.navigate('/items');
               } catch (error) {
                 alert('Error deleting item.');
               }
@@ -51,33 +40,23 @@ const Details = () => {
       )
     }
 
-    
-
   if (!item) {
     return (
       <View className='flex-1 justify-center items-center'>
-        <Text className='text-3xl'>Loading...</Text>
+        <Text className='text-3xl'>Item not found!</Text>
       </View>
     )
   }
 
   return (
-    <View className='flex w-screen h-screen items-center gap-6 p-6'>
-      <Text className='text-4xl font-medium px-2'>{item.name}</Text>
-      {item.image && (
-          <Image source={{ uri: item.image }} className="size-96 rounded-md" />
-      )}
-      <View className='w-full flex flex-col gap-2 px-2'>
-        <Text className='text-2xl font-medium'>Description</Text>
-        <Text className='text-lg'>{item.description}</Text>
-      </View>
-      <View className='w-1/5 p-0 m-0 flex justify-end items-end'>
-        <Button title="Delete" onPress={() => handleDeleteItem()} color={"#2b7fff"} />
+    <View className='p-6 h-full flex flex-col justify-between pb-10'>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <ItemCard item={item} />
+      </ScrollView>
+      <View className='flex flex-row w-full justify-between px-6 pt-4'>
+        <Button title="Update" onPress={() => router.navigate(`/items/${id}/update`)} color={"#3b82f6"} />
+        <Button title="Delete" onPress={() => handleDeleteItem()} color={"#ef4444"} />
       </View>
     </View>
   )
-}
-
-export default Details;
-
-const styles = StyleSheet.create({})
+};

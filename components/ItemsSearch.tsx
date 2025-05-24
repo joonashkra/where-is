@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Button, TextInput, View } from 'react-native'
 
 interface ItemsSearchProps {
@@ -6,9 +6,9 @@ interface ItemsSearchProps {
     setSearchTerm: (searchTerm: string) => void
 }
 
-function ItemsSearch({ setSearchTerm, searchTerm }: ItemsSearchProps) {
+export default function ItemsSearch({ setSearchTerm, searchTerm }: ItemsSearchProps) {
   return (
-    <View className='flex-row justify-between items-center self-center bg-gray-200 p-2 w-96'>
+    <View className='flex-row justify-between items-center self-center bg-gray-200 p-2 w-96 my-4'>
       <TextInput
         onChangeText={setSearchTerm}
         value={searchTerm}
@@ -21,6 +21,4 @@ function ItemsSearch({ setSearchTerm, searchTerm }: ItemsSearchProps) {
       </View>
     </View>
   )
-}
-
-export default ItemsSearch
+};

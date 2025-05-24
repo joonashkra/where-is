@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Item, NewItem } from '../types';
 
-const baseUrl = 'http://192.168.1.142:3001/items';
+const baseUrl = 'http://192.168.0.101:3001/items';
 
 const getAllItems = async (): Promise<Item[]> => {
     const response = await axios.get(baseUrl);
@@ -18,7 +18,7 @@ const addItem = async (item: NewItem) => {
     return response.data;
 };
 
-const updateItem = async (id: string, updatedItem: Item): Promise<Item> => {
+const updateItem = async (id: string, updatedItem: NewItem): Promise<Item> => {
     const response = await axios.put(`${baseUrl}/${id}`, updatedItem);
     return response.data;
 };

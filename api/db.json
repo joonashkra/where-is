@@ -1,16 +1,106 @@
 {
   "items": [
     {
-      "id": "a2f1",
-      "name": "testi",
-      "description": "testi",
-      "image": null
+      "name": "Notebook",
+      "description": "Spiral-bound notebook for taking notes.",
+      "image": "file:///var/mobile/Containers/Data/Application/E4922AA0-0D0D-4C57-AD91-A3CD83BDC153/Library/Caches/ExponentExperienceData/@anonymous/where-is-564e7858-a4a0-47c1-a530-cdc332155350/ImagePicker/8D0DC25E-8D9F-457E-A479-B0F652535087.png",
+      "id": "1002"
     },
     {
-      "id": "a28e",
-      "name": "testi2",
-      "description": "testi2",
-      "image": null
+      "id": "1003",
+      "name": "Guitar",
+      "description": "An acoustic guitar with six strings.",
+      "image": ""
+    },
+    {
+      "id": "1004",
+      "name": "Lamp",
+      "description": "Desk lamp with adjustable brightness.",
+      "image": ""
+    },
+    {
+      "id": "1005",
+      "name": "Backpack",
+      "description": "Waterproof hiking backpack with 40L capacity.",
+      "image": ""
+    },
+    {
+      "id": "1006",
+      "name": "Sneakers",
+      "description": "Comfortable running shoes with breathable fabric.",
+      "image": ""
+    },
+    {
+      "id": "1008",
+      "name": "Flashlight",
+      "description": "Rechargeable LED flashlight with multiple modes.",
+      "image": ""
+    },
+    {
+      "id": "1009",
+      "name": "Pen",
+      "description": "Gel ink pen with smooth writing experience.",
+      "image": ""
+    },
+    {
+      "id": "1010",
+      "name": "Towel",
+      "description": "Soft cotton bath towel, 70x140 cm.",
+      "image": ""
+    },
+    {
+      "id": "1014",
+      "name": "Plant",
+      "description": "Indoor potted plant, low maintenance.",
+      "image": ""
+    },
+    {
+      "id": "1015",
+      "name": "Blanket",
+      "description": "Fleece throw blanket, 150x200 cm.",
+      "image": ""
+    },
+    {
+      "id": "1017",
+      "name": "Calendar",
+      "description": "Wall calendar with monthly pages and notes section.",
+      "image": ""
+    },
+    {
+      "id": "1018",
+      "name": "Phone Stand",
+      "description": "Adjustable stand for smartphones and tablets.",
+      "image": ""
+    },
+    {
+      "id": "1019",
+      "name": "Keyboard",
+      "description": "Mechanical keyboard with RGB lighting.",
+      "image": ""
+    },
+    {
+      "id": "1020",
+      "name": "Pillow",
+      "description": "Memory foam pillow for neck support.",
+      "image": ""
+    },
+    {
+      "id": "af2e",
+      "name": "kiisu",
+      "description": "janu",
+      "image": "file:///var/mobile/Containers/Data/Application/E4922AA0-0D0D-4C57-AD91-A3CD83BDC153/Library/Caches/ExponentExperienceData/@anonymous/where-is-564e7858-a4a0-47c1-a530-cdc332155350/ImagePicker/61D27365-88E5-4452-8AA0-AB228A47D960.jpg"
+    },
+    {
+      "name": "newitem update 2",
+      "description": "testi 123 456",
+      "image": "file:///var/mobile/Containers/Data/Application/E4922AA0-0D0D-4C57-AD91-A3CD83BDC153/Library/Caches/ExponentExperienceData/@anonymous/where-is-564e7858-a4a0-47c1-a530-cdc332155350/ImagePicker/2EE835CB-954A-490F-AED7-B1BC32A7259F.jpg",
+      "id": "155c"
+    },
+    {
+      "name": "asd123456",
+      "description": "kdjdjdk",
+      "image": "file:///var/mobile/Containers/Data/Application/E4922AA0-0D0D-4C57-AD91-A3CD83BDC153/Library/Caches/ExponentExperienceData/@anonymous/where-is-564e7858-a4a0-47c1-a530-cdc332155350/ImagePicker/11EB9BBE-F01A-440B-AA4F-4E79DA74535D.jpg",
+      "id": "4e2d"
     }
   ]
 }

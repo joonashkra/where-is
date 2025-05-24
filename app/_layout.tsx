@@ -1,15 +1,15 @@
 import { Stack } from "expo-router";
 import './globals.css';
-import { createContext, useEffect, useState } from "react";
+import { createContext, use, useEffect, useState } from "react";
 import itemService from "@/services/itemService";
 import { Item } from "@/types";
 
-interface WhereIsContextType {
+interface AppContextType {
   items: Item[];
   setItems: React.Dispatch<React.SetStateAction<Item[]>>;
 }
 
-export const WhereIsContext = createContext<WhereIsContextType>(null as unknown as WhereIsContextType);
+export const AppContext = createContext<AppContextType>(null as unknown as AppContextType);
 
 export default function RootLayout() {
     const [items, setItems] = useState<Item[]>([]);
@@ -29,8 +29,8 @@ export default function RootLayout() {
     console.log(items);
 
   return (
-    <WhereIsContext.Provider value={{ items, setItems }}>
+    <AppContext.Provider value={{ items, setItems }}>
       <Stack />
-    </WhereIsContext.Provider>
+    </AppContext.Provider>
   )
 }

@@ -1,47 +1,50 @@
-import { View, Text, TextInput, Button, Image, TouchableOpacity, Keyboard, TouchableWithoutFeedback } from 'react-native';
-import React, { useContext, useState } from 'react';
+import { View, Text, TextInput, Button, Image, TouchableOpacity, Keyboard } from 'react-native';
+import React, { useState } from 'react';
 import * as ImagePicker from 'expo-image-picker';
-import itemService from '@/services/itemService';
-import { ItemsContext } from '@/app/_layout';
-import { useRouter } from 'expo-router';
+import { Item, NewItem } from '@/types';
 
-const NewItemForm = () => {
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
-  const [image, setImage] = useState<string | null>(null); // Ensure type safety
-  const { items, setItems } = useContext(ItemsContext);
-  const router = useRouter();
+interface NewItemProps {
+  item?: Item;
+  handleSubmit: (item: NewItem) => void;
+}
+
+export default function NewItemForm({ handleSubmit, item }: NewItemProps) {
+  console.log(item);
+  const [name, setName] = useState(item ? item.name : '');
+  const [description, setDescription] = useState(item ? item.description : '');
+  const [image, setImage] = useState<string | null>(item ? item.image : null);
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ['images'], // Use 'image' for latest expo-image-picker
+      mediaTypes: ['images'],
       allowsEditing: true,
       aspect: [4, 3],
       quality: 1,
     });
 
     if (!result.canceled && result.assets.length > 0) {
-      setImage(result.assets[0].uri); // Ensure we set a valid image URI
+      setImage(result.assets[0].uri);
     }
   };
 
-  const handleSubmit = async () => {
-    if(!name || !description) {
-      alert("Please give name and description.");
+  const onSubmit = () => {
+    if (!name || !description) {
+      alert("Please provide both name and description.");
       return;
     }
-    console.log('Submitting:', { name, description, image });
-    try {
-      const newItem = await itemService.addItem({ name, description, image });
-      alert("Item added successfully!");
-      setItems(items.concat(newItem));
-      router.navigate(`/items/${newItem.id}`);
-    } catch (error) {
-      console.error("Error adding item:", error);
-      alert("Failed to add item. Please try again.");
+    const newItem: NewItem = {
+      name,
+      description,
+      image: image || null,
+    };
+    handleSubmit(newItem);
+    if (!item) {
+      setName('');
+      setDescription('');
+      setImage(null);
     }
     Keyboard.dismiss();
-  };
+  }
 
   return (
       <View className='w-screen flex-col gap-5 rounded-md p-5'>
@@ -79,10 +82,8 @@ const NewItemForm = () => {
           </TouchableOpacity>
         </View>
         <View className='p-2 bg-blue-500 rounded-md'>
-          <Button title="Add Item" onPress={handleSubmit} color={"#f9fafb"} />
+          <Button title={item ? 'Update Item' : 'Add Item'} onPress={onSubmit} color={"#f9fafb"} />
         </View>
       </View>
   );
 };
-
-export default NewItemForm;

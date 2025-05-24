@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet, Text, View, Image, Pressable, PanResponder, TouchableOpacity } from 'react-native';
+import { FlatList, Text, View, Image, Pressable, PanResponder, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { Item } from '../types';
 import { Link } from 'expo-router';
@@ -7,11 +7,12 @@ interface ItemsListProps {
     items: Item[];
 }
 
-const ItemsList = ({ items }: ItemsListProps) => {
+export default function ItemsList({ items }: ItemsListProps) {
     return (
         <FlatList
             className="w-screen"
             data={items}
+            contentContainerStyle={{ paddingBottom: 120 }}
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => (
                 <Link href={`/items/${item.id}`} asChild>
@@ -45,7 +46,3 @@ const ItemsList = ({ items }: ItemsListProps) => {
         /> 
     );
 };
-
-export default ItemsList;
-
-const styles = StyleSheet.create({});
