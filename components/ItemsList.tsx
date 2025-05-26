@@ -11,13 +11,14 @@ export default function ItemsList({ items }: ItemsListProps) {
     return (
         <FlatList
             className="w-screen"
+            testID="items-list"
             data={items}
             contentContainerStyle={{ paddingBottom: 120 }}
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => (
                 <Link href={`/items/${item.id}`} asChild>
                     <Pressable>
-                        <View className="flex-row gap-4 p-5 border-b border-gray-300">
+                        <View className="flex-row gap-4 p-5 border-b border-gray-300" testID='item'>
                             {item.image && (
                                 <Image source={{ uri: item.image }} className="w-24 h-24 rounded-md" />
                             )}
