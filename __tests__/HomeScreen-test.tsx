@@ -1,4 +1,5 @@
-import { render } from '@testing-library/react-native';
+import { fireEvent, render } from '@testing-library/react-native';
+import { screen } from 'expo-router/testing-library';
 
 import HomeScreen from '@/app/index';
 

@@ -2,8 +2,8 @@ import React from 'react'
 import { Button, TextInput, View } from 'react-native'
 
 interface ItemsSearchProps {
-    searchTerm: string
-    setSearchTerm: (searchTerm: string) => void
+  searchTerm: string
+  setSearchTerm: (searchTerm: string) => void
 }
 
 export default function ItemsSearch({ setSearchTerm, searchTerm }: ItemsSearchProps) {

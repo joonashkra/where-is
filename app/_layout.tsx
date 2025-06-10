@@ -1,10 +1,8 @@
 import { Stack } from "expo-router";
-import './globals.css';
-import { createContext, use, useEffect, useState } from "react";
-import itemService from "@/services/itemService";
+import { createContext, useState } from "react";
 import { Item } from "@/types";
 
-interface AppContextType {
+export interface AppContextType {
   items: Item[];
   setItems: React.Dispatch<React.SetStateAction<Item[]>>;
 }
@@ -12,21 +10,7 @@ interface AppContextType {
 export const AppContext = createContext<AppContextType>(null as unknown as AppContextType);
 
 export default function RootLayout() {
-    const [items, setItems] = useState<Item[]>([]);
-  
-    useEffect(() => {
-        const getItems = async () => {
-            try {
-                const items = await itemService.getAllItems();
-                setItems(items);
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        getItems();
-    }, []);
-
-    console.log(items);
+  const [items, setItems] = useState<Item[]>([]);
 
   return (
     <AppContext.Provider value={{ items, setItems }}>

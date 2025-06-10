@@ -6,7 +6,7 @@ import { NewItem } from '@/types';
 import itemService from '@/services/itemService';
 import { useRouter } from 'expo-router';
 
-export default function AddItem() {
+export default function AddItemScreen() {
   const { items, setItems } = useContext(AppContext);
   const router = useRouter();
 

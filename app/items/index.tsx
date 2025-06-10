@@ -1,15 +1,25 @@
-import { Button, StyleSheet, Text, View } from 'react-native'
-import React, { useContext, useState } from 'react'
+import { Text, View } from 'react-native'
+import React, { useContext, useEffect, useState } from 'react'
 import ItemsList from '@/components/ItemsList'
 import ItemsSearch from '@/components/ItemsSearch'
 import { AppContext } from '../_layout'
-import { useRouter } from 'expo-router'
+import itemService from '@/services/itemService'
 
-export default function index() {
-  const { items } = useContext(AppContext);
-  const router = useRouter();
-
+export default function ItemsScreen() {
   const [searchTerm, setSearchTerm] = useState('');
+  const { items, setItems } = useContext(AppContext);
+
+  useEffect(() => {
+      const getItems = async () => {
+          try {
+              const items = await itemService.getAllItems();
+              setItems(items);
+          } catch (error) {
+              console.log(error);
+          }
+      };
+      getItems();
+  }, []);
 
   if(!items) {
     return (

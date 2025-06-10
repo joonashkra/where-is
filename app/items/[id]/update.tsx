@@ -1,15 +1,14 @@
 import { View, Text, TouchableWithoutFeedback, Keyboard ,ScrollView } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { AppContext } from '@/app/_layout';
-import { Item, NewItem } from '@/types';
+import { NewItem } from '@/types';
 import itemService from '@/services/itemService';
 import NewItemForm from '@/components/NewItemForm';
 
-export default function update() {
+export default function UpdateItemScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const { items, setItems } = useContext(AppContext);
-  const router = useRouter();
 
   const item = items.find(item => item.id === id);
 

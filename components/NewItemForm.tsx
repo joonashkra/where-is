@@ -1,4 +1,4 @@
-import { View, Text, TextInput, Button, Image, TouchableOpacity, Keyboard } from 'react-native';
+import { View, Text, TextInput, Button, Image, TouchableOpacity, Keyboard, Alert } from 'react-native';
 import React, { useState } from 'react';
 import * as ImagePicker from 'expo-image-picker';
 import { Item, NewItem } from '@/types';
@@ -29,7 +29,7 @@ export default function NewItemForm({ handleSubmit, item }: NewItemProps) {
 
   const onSubmit = () => {
     if (!name || !description) {
-      alert("Please provide both name and description.");
+      Alert.alert("Please provide both name and description.");
       return;
     }
     const newItem: NewItem = {
@@ -82,7 +82,7 @@ export default function NewItemForm({ handleSubmit, item }: NewItemProps) {
           </TouchableOpacity>
         </View>
         <View className='p-2 bg-blue-500 rounded-md'>
-          <Button title={item ? 'Update Item' : 'Add Item'} onPress={onSubmit} color={"#f9fafb"} />
+          <Button title={item ? 'Update Item' : 'Add Item'} onPress={onSubmit} color={"#f9fafb"} testID='submit-button' />
         </View>
       </View>
   );
