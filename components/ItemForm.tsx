@@ -3,12 +3,12 @@ import React, { useState } from 'react';
 import * as ImagePicker from 'expo-image-picker';
 import { Item, NewItem } from '@/types';
 
-interface NewItemProps {
+interface ItemFormProps {
   item?: Item;
   handleSubmit: (item: NewItem) => void;
 }
 
-export default function NewItemForm({ handleSubmit, item }: NewItemProps) {
+export default function ItemForm({ handleSubmit, item }: ItemFormProps) {
   console.log(item);
   const [name, setName] = useState(item ? item.name : '');
   const [description, setDescription] = useState(item ? item.description : '');

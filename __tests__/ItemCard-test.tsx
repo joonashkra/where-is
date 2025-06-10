@@ -5,7 +5,7 @@ const mockItem = { id: '1', name: 'mockName1', description: 'mockDescription1', 
 
 
 describe('<ItemCard />', () => {
-  test('ItemCard renders item', () => {
+  test('renders item', () => {
     const { getByText } = render(<ItemCard item={mockItem} />);
 
     getByText(mockItem.name);

@@ -1,5 +1,5 @@
 import ItemsList from '@/components/ItemsList';
-import { render, fireEvent } from '@testing-library/react-native';
+import { render, fireEvent, screen } from '@testing-library/react-native';
 
 const mockItems = [
     { id: '1', name: 'mockName1', description: 'mockDescription1', image: null },
@@ -9,11 +9,11 @@ const mockItems = [
 
 
 describe('<ItemsList />', () => {
-  test('ItemsList renders items', () => {
+  test('renders items', () => {
     const { getByText } = render(<ItemsList items={mockItems} />);
 
     mockItems.forEach(item => {
-        getByText(item.name);
+      getByText(item.name);
     })
   });
 });

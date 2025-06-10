@@ -1,10 +1,10 @@
 import { View, Text, TouchableWithoutFeedback, Keyboard ,ScrollView } from 'react-native';
-import { useLocalSearchParams, useRouter } from 'expo-router';
+import { useLocalSearchParams } from 'expo-router';
 import React, { useContext } from 'react';
 import { AppContext } from '@/app/_layout';
 import { NewItem } from '@/types';
 import itemService from '@/services/itemService';
-import NewItemForm from '@/components/NewItemForm';
+import ItemForm from '@/components/ItemForm';
 
 export default function UpdateItemScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -39,7 +39,7 @@ export default function UpdateItemScreen() {
         <View className='py-6 h-full flex flex-col items-center'>
             <Text className='text-4xl font-medium px-2'>{item.name}</Text>
             <ScrollView showsVerticalScrollIndicator={false}>
-                <NewItemForm item={item} handleSubmit={handleSubmit} />
+                <ItemForm item={item} handleSubmit={handleSubmit} />
             </ScrollView>
         </View>
     </TouchableWithoutFeedback>

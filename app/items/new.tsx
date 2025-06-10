@@ -1,6 +1,6 @@
 import { Text, TouchableWithoutFeedback, View, Keyboard } from 'react-native';
 import React, { useContext } from 'react';
-import NewItemForm from '@/components/NewItemForm';
+import ItemForm from '@/components/ItemForm';
 import { AppContext } from '../_layout';
 import { NewItem } from '@/types';
 import itemService from '@/services/itemService';
@@ -28,7 +28,7 @@ export default function AddItemScreen() {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View className="flex items-center p-5 min-h-screen">
         <Text className='text-4xl'>New Item</Text>
-        <NewItemForm handleSubmit={handleSubmit} />
+        <ItemForm handleSubmit={handleSubmit} />
       </View>
     </TouchableWithoutFeedback>
   );
