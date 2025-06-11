@@ -1,6 +1,7 @@
 import { Stack } from "expo-router";
 import { createContext, useState } from "react";
 import { Item } from "@/types";
+import "./globals.css";
 
 export interface AppContextType {
   items: Item[];

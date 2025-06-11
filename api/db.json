@@ -1,12 +1,6 @@
 {
   "items": [
     {
-      "name": "Notebook",
-      "description": "Spiral-bound notebook for taking notes.",
-      "image": "file:///var/mobile/Containers/Data/Application/E4922AA0-0D0D-4C57-AD91-A3CD83BDC153/Library/Caches/ExponentExperienceData/@anonymous/where-is-564e7858-a4a0-47c1-a530-cdc332155350/ImagePicker/8D0DC25E-8D9F-457E-A479-B0F652535087.png",
-      "id": "1002"
-    },
-    {
       "id": "1003",
       "name": "Guitar",
       "description": "An acoustic guitar with six strings.",
@@ -83,24 +77,6 @@
       "name": "Pillow",
       "description": "Memory foam pillow for neck support.",
       "image": ""
-    },
-    {
-      "id": "af2e",
-      "name": "kiisu",
-      "description": "janu",
-      "image": "file:///var/mobile/Containers/Data/Application/E4922AA0-0D0D-4C57-AD91-A3CD83BDC153/Library/Caches/ExponentExperienceData/@anonymous/where-is-564e7858-a4a0-47c1-a530-cdc332155350/ImagePicker/61D27365-88E5-4452-8AA0-AB228A47D960.jpg"
-    },
-    {
-      "name": "newitem update 2",
-      "description": "testi 123 456",
-      "image": "file:///var/mobile/Containers/Data/Application/E4922AA0-0D0D-4C57-AD91-A3CD83BDC153/Library/Caches/ExponentExperienceData/@anonymous/where-is-564e7858-a4a0-47c1-a530-cdc332155350/ImagePicker/2EE835CB-954A-490F-AED7-B1BC32A7259F.jpg",
-      "id": "155c"
-    },
-    {
-      "name": "asd123456",
-      "description": "kdjdjdk",
-      "image": "file:///var/mobile/Containers/Data/Application/E4922AA0-0D0D-4C57-AD91-A3CD83BDC153/Library/Caches/ExponentExperienceData/@anonymous/where-is-564e7858-a4a0-47c1-a530-cdc332155350/ImagePicker/11EB9BBE-F01A-440B-AA4F-4E79DA74535D.jpg",
-      "id": "4e2d"
     }
   ]
 }
