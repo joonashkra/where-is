@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Item, NewItem } from '../types';
 
-const baseUrl = 'http://192.168.0.101:3001/items';
+const baseUrl = `http://${process.env.EXPO_PUBLIC_IP_ADDR}:3001/items`;
 
 const getAllItems = async (): Promise<Item[]> => {
     const response = await axios.get(baseUrl);
